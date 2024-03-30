@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+    * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Arial', sans-serif;
+ }
+ 
+ :root {
+     --primary-color: rgba(44, 62, 80, 0.8);
+     --primary-text-color: #ecf0f1;
+ }
+ 
+ body {
+     background-color: #f4f4f4;
+     margin: 0;
+ }
+ 
+ header {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     background-color: var(--primary-color);
+     color: var(--primary-text-color);
+     padding: 10px;
+ }
+ 
+ img {
+     padding: 7px;
+     border-radius: 50%;
+ }
+ 
+ .project-details {
+     max-width: 600px;
+     margin: 40px auto;
+     background-color: #fff;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
+ 
+ h2 {
+     text-align: center;
+     font-size: 1.5em;
+     margin-bottom: 15px;
+     color: var(--primary-color);
+ }
+ 
+ form {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ label {
+     font-size: 1.2em;
+     margin-bottom: 8px;
+ }
+ 
+ input,
+ textarea {
+     width: 100%;
+     padding: 10px;
+     margin-bottom: 15px;
+     box-sizing: border-box;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+ }
+ textarea {
+     padding: 10px;
+     width: 100%;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     font-size: 16px;
+     box-sizing: border-box;
+     resize: none;
+     outline: none;
+ }
+ button {
+     padding: 12px;
+     margin-bottom: 10px;
+     background-color: var(--primary-color);
+     color: var(--primary-text-color);
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+ }
+ 
+ button:hover {
+     background-color: #34495e;
+ }
+ input:focus {
+   outline: none;
+   border-color: rgb(52, 73, 94);
+   box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+ }
+ 
+ textarea:focus{
+     outline: none;
+   border-color: rgb(52, 73, 94);
+   box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+ }
+ </style>
+<body>
+    <div class="background"></div>
+    <header>
+        <img src="projectlogo.jpg" alt="" width="40px" height="40px">
+        <h1>Project</h1>
+    </header>
+    <div class="project-details">
+        <h2>Add New Project</h2>
+        <form id="projectForm">
+            <label for="projectDomain">Domain:</label>
+            <input type="text" id="projectDomain" name="projectDomain">
+
+            <label for="projectName">Project Name:</label>
+            <input type="text" id="projectName" name="projectName" >
+
+            <label for="projectEmail">Email:</label>
+            <input type="email" id="projectEmail" name="projectEmail">
+
+            <label for="projectDocument">Upload Document:</label>
+            <input type="file" id="projectDocument" name="projectDocument" accept=".pdf, .doc, .docx" > 
+
+            <button type="button" id="addProjectBtn">Add Project</button>
+            <button onclick="clearLocalStorage()">Clear Local Storage</button>
+        </form>
+    </div>
+
+    <script>
+        function clearLocalStorage() {
+    localStorage.clear();
+   
+}
+
+
+         document.getElementById('addProjectBtn').addEventListener('click', function() {
+           var projectName = document.getElementById('projectName').value;
+            var projectDomain = document.getElementById('projectDomain').value;
+             var projectEmail = document.getElementById('projectEmail').value;
+     var projectDocument = document.getElementById('projectDocument').value;
+            var projectList = localStorage.getItem('projectList');
+
+            if (!projectList) {
+                projectList = [];
+            } else {
+                projectList = JSON.parse(projectList);
+            }
+
+            projectList.push({domain: projectDomain, name: projectName,email: projectEmail, document: projectDocument}); 
+            localStorage.setItem('projectList', JSON.stringify(projectList));
+            window.location.href = 'cse.html';
+            alert('Project added successfully!');
+       });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<style>
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --primary-color: rgba(44, 62, 80, 0.8);
+    --primary-text-color: #ecf0f1;
+}
+
+body {
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    padding: 10px;
+}
+
+img {
+    padding: 7px;
+    border-radius: 50%;
+}
+
+.project-details {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+textarea {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+}
+button {
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #34495e;
+}
+input:focus {
+  outline: none;
+  border-color: rgb(52, 73, 94);
+  box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+}
+
+textarea:focus{
+    outline: none;
+  border-color: rgb(52, 73, 94);
+  box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+}
+</style>
+<body>
+    <div class="background"></div>
+    <header>
+        <img src="/hackathon/images/human-logo.jpg" alt="" width="40px" height="40px">
+        <h1>John Doe</h1>
+    </header>
+    <div class="project-details">
+        <h2>Add New Project</h2>
+        <form id="projectForm">
+            <label for="projectDomain">Domain:</label>
+            <input type="text" id="projectDomain" name="projectDomain">
+
+            <label for="projectName">Project Name:</label>
+            <input type="text" id="projectName" name="projectName" >
+
+            
+            <label for="projectUrl">Project URL:</label>
+            <input type="url" id="projectUrl" name="projectUrl" >
+            
+            <label for="projectVideo">Upload Video:</label>
+            <input type="file" id="projectVideo" name="projectVideo" accept="video/*">
+
+            
+            <label for="projectDescription">Description:</label>
+            <textarea id="projectDescription" name="projectDescription" rows="4"></textarea>
+
+            <label for="projectDocument">Upload Document:</label>
+            <input type="file" id="projectDocument" name="projectDocument" accept=".pdf, .doc, .docx">
+            
+
+            <button type="button" id="addProjectBtn">Add Project</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('addProjectBtn').addEventListener('click', function() {
+            var projectName = document.getElementById('projectName').value;
+            var projectDomain = document.getElementById('projectDomain').value;
+            var projectList = localStorage.getItem('projectList');
+
+            if (!projectList) {
+                projectList = [];
+            } else {
+                projectList = JSON.parse(projectList);
+            }
+
+            projectList.push({domain: projectDomain, name: projectName});
+            localStorage.setItem('projectList', JSON.stringify(projectList));
+            alert('Project added successfully!');
+        });
+    </script>
+</body>
+</html> -->

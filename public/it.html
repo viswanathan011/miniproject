@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Project Titles</title>
+  <link rel="stylesheet" href="dept.css">
+</head>
+<body>
+
+  <header>
+    <h1>IT Project Titles</h1>
+  </header>
+
+  <section id="project-list">
+    <ul>
+      
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Your Dashboard. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var projectList = localStorage.getItem('projectList');
+
+        if (projectList) {
+            projectList = JSON.parse(projectList);
+
+            var ul = document.querySelector('#project-list ul');
+            projectList.forEach(function(project) {
+                var li = document.createElement('li');
+                li.textContent = project.domain + ': ' + project.name;
+                ul.appendChild(li);
+            });
+        }
+    });
+  </script>
+</body>
+</html>

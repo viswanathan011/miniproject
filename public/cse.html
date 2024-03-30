@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="dept.css">
+<title>CSE Project Titles</title>
+<style>
+  
+  button {
+    background-color: transparent;
+    border:none; 
+    font-size: 16px;
+    }
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1>CSE Project Titles</h1>
+</header>
+
+<section id="project-list">
+  <ul>
+    <li><button onclick="sendOTP('+916369316244', 'chatbot.pdf')">Intelligent Chatbots for Customer Support</button></li>
+    <li><button onclick="sendOTP('+916369316244', 'e-learn.pdf')">Web-based E-Learning System</button></li>
+    <li><button onclick="sendOTP('+1234567890', 'secure-banking.pdf')">Secure Online Banking System</button></li>
+    <li><button onclick="sendOTP('+1234567890', 'data-encryption.pdf')">Data Encryption and Decryption Algorithms</button></li>
+    <li><button onclick="sendOTP('+1234567890', 'facial-recognition.pdf')">Facial Recognition System for Access Control</button></li>
+  </ul>
+</section>
+
+<section id="projectlist">
+  <ul>
+
+  </ul>
+</section>
+
+<footer>
+  <p>&copy; 2024 Your Dashboard. All rights reserved.</p>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hapi/joi@17.1.1/dist/joi.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.36/moment-timezone.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.36/moment-timezone-with-data.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+        var projectList = localStorage.getItem('projectList');
+
+        if (projectList) {
+            projectList = JSON.parse(projectList);
+            var ul = document.querySelector('#projectlist ul');
+projectList.forEach(function(project) {
+    var li = document.createElement('li');
+    var button = document.createElement('button');
+    button.textContent =project.name;
+    button.setAttribute('onclick', "sendOTP('" + project.phoneNumber + "', '" + project.filePath + "')");
+    li.appendChild(button);
+    ul.appendChild(li);
+});
+        }
+    });
+
+
+function sendOTP(phoneNumber, pdfUrl) {
+  const otp = generateOTP();
+  sendSMS(phoneNumber, otp); 
+  showModal(otp, pdfUrl); 
+}
+
+function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+function sendSMS(phoneNumber, otp) {
+  $.ajax({
+    type: 'POST',
+    url: 'https://api.twilio.com/2010-04-01/Accounts/AC3b30ea45406fde6309ef4f6631007e1f/Messages.json',
+    headers: {
+      'Authorization': 'Basic ' + btoa('AC3b30ea45406fde6309ef4f6631007e1f:71ccfe685751edeeb956f5434d9b6224')
+    },
+    data: {
+      "To": phoneNumber,
+      "From": "+13254406207",
+      "Body": "Your OTP is: " + otp
+    },
+    success: function(response) {
+      console.log('OTP sent successfully');
+    },
+    error: function(xhr, status, error) {
+      console.error('Error sending OTP:', error);
+    }
+  });
+}
+
+function verifyOTP(otp, pdfUrl) {
+  const enteredOTP = prompt("Please enter the OTP received on your mobile number:");
+  if (enteredOTP === otp) {
+    window.open(pdfUrl, '_blank'); 
+  } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid OTP',
+      text: 'Access denied. Please enter the correct OTP.',
+    });
+  }
+}
+
+function showModal(otp, pdfUrl) {
+  verifyOTP(otp, pdfUrl);
+}
+</script>
+
+</body>
+</html>

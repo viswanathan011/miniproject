@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.edit-profile-container {
+    width: 70%; 
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+}
+
+
+h2 {
+    color:#2c3e50;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+#logo{
+    display: flex;
+    justify-content: center;
+  align-items: center;
+}
+label {
+    margin-bottom: 5px;
+    color: #34495e;
+    font-size: 17px;
+}
+
+
+input,
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+textarea {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: none;
+}
+input,textarea:hover{
+    outline: none;
+    border: 1px solid #2980b9;;
+}
+button {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.background {
+  background-image: url(homePage.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(3px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+  </style>
+</head>
+<body>
+    <div class="background"></div>
+
+  <div class="edit-profile-container" style="background-color: rgba(236, 240, 241, 0.8);color: #2c3e50;">
+    <h1 style="text-align: center;">Edit Profile</h1>
+    <div id="logo">
+        <span>
+          <i class="fa-solid fa-user fa-2xl"></i>
+        </span>
+    </div>
+    <form >
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email">
+      </div>
+      <div class="form-group">
+        <label for="institution">Institution:</label>
+        <input type="text" id="institution" name="name" placeholder="Institution Name">
+      </div>
+
+      <div class="form-group">
+        <label for="twitter">Linkedin URL:</label>
+        <input type="url" id="Linkedin" name="Linkedin" placeholder="Your Linkedin URL">
+      </div>
+
+      <div class="form-group">
+        <label for="github">GitHub URL:</label>
+        <input type="url" id="github" name="github" placeholder="Your GitHub URL">
+      </div>
+
+      <div class="form-group">
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio" rows="4" placeholder="Write a short bio about yourself"></textarea>
+      </div>
+
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+</body>
+</html>
